@@ -2,10 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Relógio Digital</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: left;
+            align-items: left;
+            height: 50vh;
+            background-color: #BDB76B;
+        }
+
+        #digital-clock {
+    	    font-size: 5em;
+            //color: #A9A9A9; /* Defina a cor desejada, como preto (#000) ou outra cor hexadecimal */
+	    color: #4B0082;
+	}
+    </style>
 </head>
 <body>
-    <h1> PÁGINA LOCONA - AULA LOCONA </h1>
+    <div id="digital-clock"></div>
+    <script>
+        function updateDigitalClock() {
+            const now = new Date();
+
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            const digitalClock = document.getElementById('digital-clock');
+            digitalClock.textContent = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}`;
+        }
+
+        function formatTime(time) {
+            return time < 10 ? `0${time}` : time;
+        }
+
+        // Atualizar o relógio a cada segundo
+        setInterval(updateDigitalClock, 1000);
+
+        // Atualizar o relógio imediatamente ao carregar a página
+        updateDigitalClock();
+    </script>
 </body>
 </html>
