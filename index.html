@@ -1,51 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Relógio Digital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícia</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: left;
-            align-items: left;
-            height: 50vh;
-            background-color: #BDB76B;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
-
-        #digital-clock {
-    	    font-size: 5em;
-            //color: #A9A9A9; /* Defina a cor desejada, como preto (#000) ou outra cor hexadecimal */
-	    color: #4B0082;
-	}
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        p {
+            font-size: 18px;
+        }
+        .visits {
+            margin-top: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <div id="digital-clock"></div>
+    <div class="container">
+        <h1>Grande Avanço na Tecnologia Sustentável</h1>
+        <p>Pesquisadores desenvolvem nova bateria ecológica que pode revolucionar a indústria de energia renovável.</p>
+        <p class="visits">Número de visitas: <span id="visitCount">0</span></p>
+    </div>
+
     <script>
-        function updateDigitalClock() {
-            const now = new Date();
-
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
-            const seconds = now.getSeconds();
-
-            const digitalClock = document.getElementById('digital-clock');
-            digitalClock.textContent = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}`;
-        }
-
-        function formatTime(time) {
-            return time < 10 ? `0${time}` : time;
-        }
-
-        // Atualizar o relógio a cada segundo
-        setInterval(updateDigitalClock, 1000);
-
-        // Atualizar o relógio imediatamente ao carregar a página
-        updateDigitalClock();
+        // Obtém o número de visitas armazenado no localStorage
+        let visitCount = localStorage.getItem('visitCount') || 0;
+        visitCount++;
+        localStorage.setItem('visitCount', visitCount);
+        document.getElementById('visitCount').textContent = visitCount;
     </script>
 </body>
 </html>
